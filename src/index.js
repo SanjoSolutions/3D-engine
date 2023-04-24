@@ -6,27 +6,10 @@ function render(context, cube) {
   context.beginPath()
 
   context.moveTo(cube.x, cube.z)
-  context.lineTo(cube.x + cube.width, cube.z)
-  context.lineTo(cube.x + cube.width, cube.z + cube.height)
-  context.lineTo(cube.x, cube.z + cube.height)
-  context.closePath()
-
-
-  context.moveTo(cube.x, cube.z)
   context.lineTo(
     cube.x + 0.5 * cube.depth * Math.cos(Y_AXIS_ANGLE),
     cube.z + 0.5 * cube.depth * Math.sin(Y_AXIS_ANGLE),
   )
-  context.lineTo(cube.x +
-    cube.width +
-    0.5 *
-    cube.depth *
-    Math.cos(Y_AXIS_ANGLE), cube.z + 0.5 * cube.depth * Math.sin(Y_AXIS_ANGLE))
-  context.lineTo(cube.x + cube.width, cube.z)
-  context.closePath()
-
-
-  context.moveTo(cube.x + cube.width, cube.z)
   context.lineTo(cube.x +
     cube.width +
     0.5 *
@@ -41,13 +24,29 @@ function render(context, cube) {
     cube.z + cube.height + 0.5 * cube.depth * Math.sin(Y_AXIS_ANGLE),
   )
   context.lineTo(cube.x + cube.width, cube.z + cube.height)
+  context.lineTo(cube.x, cube.z + cube.height)
   context.closePath()
-
 
   if (cube.color) {
     context.fillStyle = cube.color
     context.fill()
   }
+
+  context.moveTo(cube.x + cube.width, cube.z)
+  context.lineTo(cube.x, cube.z)
+
+  context.moveTo(cube.x + cube.width, cube.z)
+  context.lineTo(
+    cube.x +
+    cube.width +
+    0.5 *
+    cube.depth *
+    Math.cos(Y_AXIS_ANGLE),
+    cube.z + 0.5 * cube.depth * Math.sin(Y_AXIS_ANGLE),
+  )
+
+  context.moveTo(cube.x + cube.width, cube.z)
+  context.lineTo(cube.x + cube.width, cube.z + cube.height)
 
   context.stroke()
 }
