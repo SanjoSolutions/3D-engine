@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "build": "webpack --config node_modules/@sanjo/webpack/webpack.prod.js",
-    "build:watch": "webpack serve --open --config node_modules/@sanjo/webpack/webpack.dev.js"
+    "build:watch": "webpack serve --open --config webpack.dev.js"
   },
   "dependencies": {
     "@sanjo/canvas": "^0.1.0",
